@@ -1,0 +1,90 @@
+[
+  {
+    "id": 1,
+    "name": "WTT Tower",
+    "location": "Sector 16",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "1000 sqft - 51,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://worldtradetower.in/wp-content/uploads/2024/04/world-trade-tower-noida-sector-16-1.jpg",
+    "description": "Adjacent to Metro Station, Sector-16 Noida"
+  },
+  {
+    "id": 2,
+    "name": "Max Tower",
+    "location": "Sector 16",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "5258 sqft - 25,500 sqft",
+    "availableFor": ["lease"],
+    "image": "https://res.cloudinary.com/myhq/image/upload/q_auto/w_1920/f_auto/workspaces/max-towers-sector16b/commercial-leasing/exterior/7h5nve.jpg",
+    "description": "Adjacent to Metro Station, Sector-16 Noida"
+  },
+  {
+    "id": 3,
+    "name": "Berger Tower",
+    "location": "Sector 16",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "5000 sqft - 22,750 sqft",
+    "availableFor": ["lease"],
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSIINZi6qeaG4dE-OOZqQJ_8oSa79-_pLNHFg&s",
+    "description": "Adjacent to Metro Station, Sector-16 Noida"
+  },
+  {
+    "id": 4,
+    "name": "Stellar Tower 1423",
+    "location": "Sector 142",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "3000 sqft - 35,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://www.stellargroup.in/stellar-1423/assets/images/slider/slider-2.jpg",
+    "description": "Adjacent to Metro Station, Sector-142 Noida"
+  },
+  {
+    "id": 5,
+    "name": "Stellar Okas Tower 1425",
+    "location": "Sector 142",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "3000 sqft - 37,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://www.stellargroup.in/stellar-1425/assets/images/slider/slider-1.jpg",
+    "description": "Adjacent to Metro Station, Sector-142 Noida"
+  },
+  {
+    "id": 6,
+    "name": "GM IT Park",
+    "location": "Sector 142",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "3,500 sqft - 18,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://cf-cdn.cityinfoservices.com/public/uploads/project/images/large/5120562d25fd881352GM%20IT%20PARK.jpg",
+    "description": "Adjacent to Metro Station, Sector-142 Noida"
+  },
+  {
+    "id": 7,
+    "name": "Advant Tower",
+    "location": "Sector 142",
+    "type": "Office Space",
+    "category": "Office Space",
+    "size": "2,500 sqft - 30,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://www.advantindia.com/images/banner-4.jpg",
+    "description": "Adjacent to Metro Station, Sector-142 Noida"
+  },
+  {
+    "id": 8,
+    "name": "Wave Business Tower",
+    "location": "Sector 132",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "20,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://newprojects.99acres.com/projects/wave_infratech/wave_business_tower_1_/images/main.jpg",
+    "description": "Luxury office suites for executives."
+  }
+]
