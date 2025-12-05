@@ -155,15 +155,15 @@ const ConnectSection = () => {
               <div className="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-xl">
                 <div className="grid grid-cols-3 gap-6 text-center">
                   <div>
-                    <p className="text-3xl font-black text-[#1C244B]">2</p>
+                    <p className="sm:text-xl md:text-2xl lg:text-3xl font-black text-[#1C244B]">2</p>
                     <p className="text-xs text-gray-600 font-bold uppercase mt-1">Millions Sq. ft Space Leased</p>
                   </div>
                   <div className="border-l border-r border-gray-200">
-                    <p className="text-3xl font-black text-[#1C244B]">10000+</p>
+                    <p className="sm:text-xl md:text-2xl lg:text-3xl font-black text-[#1C244B]">10000+</p>
                     <p className="text-xs text-gray-600 font-bold uppercase mt-1">Property Owners</p>
                   </div>
                   <div>
-                    <p className="text-3xl font-black text-[#1C244B]">15+</p>
+                    <p className="sm:text-xl md:text-2xl lg:text-3xl font-black text-[#1C244B]">15+</p>
                     <p className="text-xs text-gray-600 font-bold uppercase mt-1">Years</p>
                   </div>
                 </div>
