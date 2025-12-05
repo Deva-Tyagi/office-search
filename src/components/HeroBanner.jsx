@@ -1,13 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
 import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { FaTimes } from 'react-icons/fa';
 import emailjs from '@emailjs/browser';
 import projectsData from '../data/projects.json';
-import img1 from '/os1.jpg';
-import img2 from '/os2.jpg';
-import img3 from '/os3.jpg';
-import img4 from '/os4.jpg';
 
 const noidaSectors = [
   "Sector 1", "Sector 2", "Sector 3", "Sector 4", "Sector 5", "Sector 6","Sector 7", "Sector 8","Sector 9",
@@ -29,8 +25,15 @@ const HeroBanner = () => {
   const [formData, setFormData] = useState({ name: '', mobile: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState('');
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
-  const carouselImages = [img1, img2, img3, img4];
+  // Optimized image sources - use optimized versions
+  const carouselImages = [
+    '/os1.jpg',
+    '/os2.jpg',
+    '/os3.jpg',
+    '/os4.jpg'
+  ];
 
   // Refs for GSAP animations
   const headingRef = useRef(null);
@@ -44,27 +47,67 @@ const HeroBanner = () => {
   const formRef = useRef(null);
   const suggestionsRef = useRef(null);
 
-  // Get unique locations from projects.json
+  // Preload images efficiently
+  useEffect(() => {
+    const preloadImages = () => {
+      let loadedCount = 0;
+      const totalImages = carouselImages.length;
+
+      carouselImages.forEach((src) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => {
+          loadedCount++;
+          if (loadedCount === totalImages) {
+            setImagesLoaded(true);
+          }
+        };
+        img.onerror = () => {
+          loadedCount++;
+          if (loadedCount === totalImages) {
+            setImagesLoaded(true);
+          }
+        };
+      });
+    };
+
+    // Delay image loading to prioritize critical content
+    const timer = setTimeout(preloadImages, 100);
+    return () => clearTimeout(timer);
+  }, []);
+
+  // Memoized location getter
+  const uniqueLocations = useRef(null);
   const getUniqueLocations = () => {
-    const locations = projectsData.map(project => project.location);
-    return [...new Set(locations)].sort();
+    if (!uniqueLocations.current) {
+      const locations = projectsData.map(project => project.location);
+      uniqueLocations.current = [...new Set(locations)].sort();
+    }
+    return uniqueLocations.current;
   };
 
-  // Smart search with suggestions
+  // Debounced search with suggestions
+  const searchTimeout = useRef(null);
   const handleSearchInput = (value) => {
     setSearch(value);
     
-    if (value.trim().length > 0) {
-      const uniqueLocations = getUniqueLocations();
-      const filtered = uniqueLocations.filter(loc => 
-        loc.toLowerCase().includes(value.toLowerCase())
-      );
-      setSuggestions(filtered);
-      setShowSuggestions(filtered.length > 0);
-    } else {
-      setSuggestions([]);
-      setShowSuggestions(false);
+    if (searchTimeout.current) {
+      clearTimeout(searchTimeout.current);
     }
+
+    searchTimeout.current = setTimeout(() => {
+      if (value.trim().length > 0) {
+        const locations = getUniqueLocations();
+        const filtered = locations.filter(loc => 
+          loc.toLowerCase().includes(value.toLowerCase())
+        );
+        setSuggestions(filtered);
+        setShowSuggestions(filtered.length > 0);
+      } else {
+        setSuggestions([]);
+        setShowSuggestions(false);
+      }
+    }, 150);
   };
 
   const handleSuggestionClick = (suggestion) => {
@@ -82,89 +125,113 @@ const HeroBanner = () => {
     };
 
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      if (searchTimeout.current) {
+        clearTimeout(searchTimeout.current);
+      }
+    };
   }, []);
 
-  // Premium Ken Burns Carousel Effect
+  // Optimized carousel with requestAnimationFrame
   useEffect(() => {
+    if (!imagesLoaded) return;
+
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % carouselImages.length);
     }, 6000);
     return () => clearInterval(interval);
-  }, []);
+  }, [imagesLoaded]);
 
+  // Optimized carousel animations
   useEffect(() => {
-    if (carouselRef.current) {
-      const images = carouselRef.current.querySelectorAll('.carousel-image');
-      images.forEach((img, index) => {
-        const isActive = index === currentSlide;
-        const isPrev = index === (currentSlide - 1 + carouselImages.length) % carouselImages.length;
-        
-        if (isActive) {
-          gsap.to(img, {
-            opacity: 1,
-            scale: 1.15,
-            x: '5%',
-            y: '-3%',
-            duration: 6,
-            ease: 'none',
-            zIndex: 2
-          });
-        } else if (isPrev) {
-          gsap.to(img, {
-            opacity: 0,
-            scale: 1.2,
-            duration: 1,
-            ease: 'power2.inOut',
-            zIndex: 1
-          });
-        } else {
-          gsap.set(img, { opacity: 0, scale: 1, x: '0%', y: '0%', zIndex: 0 });
-        }
-      });
-    }
-  }, [currentSlide]);
+    if (!imagesLoaded || !carouselRef.current) return;
 
+    const images = carouselRef.current.querySelectorAll('.carousel-image');
+    
+    images.forEach((img, index) => {
+      const isActive = index === currentSlide;
+      const isPrev = index === (currentSlide - 1 + carouselImages.length) % carouselImages.length;
+      
+      if (isActive) {
+        gsap.to(img, {
+          opacity: 1,
+          scale: 1.1,
+          x: '3%',
+          y: '-2%',
+          duration: 6,
+          ease: 'none',
+          zIndex: 2,
+          force3D: true,
+          willChange: 'transform, opacity'
+        });
+      } else if (isPrev) {
+        gsap.to(img, {
+          opacity: 0,
+          scale: 1.15,
+          duration: 0.8,
+          ease: 'power1.inOut',
+          zIndex: 1,
+          force3D: true,
+          clearProps: 'willChange'
+        });
+      } else {
+        gsap.set(img, { 
+          opacity: 0, 
+          scale: 1, 
+          x: '0%', 
+          y: '0%', 
+          zIndex: 0,
+          clearProps: 'willChange'
+        });
+      }
+    });
+  }, [currentSlide, imagesLoaded]);
+
+  // Optimized entrance animations - only run once
   useEffect(() => {
+    if (!imagesLoaded) return;
+
     const ctx = gsap.context(() => {
-      const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-      tl.from(overlayRef.current, { opacity: 0, duration: 0.8 });
-      tl.from(headingRef.current, { y: 50, opacity: 0, duration: 1, ease: 'back.out(1.7)' }, '-=0.4');
-      tl.from(subtitleRef.current, { y: 30, opacity: 0, duration: 0.8 }, '-=0.6');
-      tl.from(tabsRef.current, { y: 40, opacity: 0, duration: 0.8, ease: 'power2.out' }, '-=0.5');
-      tl.from(searchBoxRef.current, { scale: 0.95, y: 50, opacity: 0, duration: 1, ease: 'back.out(1.2)' }, '-=0.6');
-      tl.from(ctaRef.current, { scale: 0, opacity: 0, duration: 0.6, ease: 'back.out(2)' }, '-=0.4');
+      const tl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+      tl.from(overlayRef.current, { opacity: 0, duration: 0.5 });
+      tl.from(headingRef.current, { y: 40, opacity: 0, duration: 0.7 }, '-=0.3');
+      tl.from(subtitleRef.current, { y: 20, opacity: 0, duration: 0.5 }, '-=0.5');
+      tl.from(tabsRef.current, { y: 30, opacity: 0, duration: 0.6 }, '-=0.4');
+      tl.from(searchBoxRef.current, { scale: 0.95, y: 30, opacity: 0, duration: 0.7 }, '-=0.5');
+      tl.from(ctaRef.current, { scale: 0, opacity: 0, duration: 0.5 }, '-=0.3');
 
+      // Lighter floating animation
       gsap.to(ctaRef.current, {
-        y: -10,
-        duration: 2,
-        ease: 'power1.inOut',
+        y: -8,
+        duration: 2.5,
+        ease: 'sine.inOut',
         yoyo: true,
         repeat: -1
       });
     });
     return () => ctx.revert();
-  }, []);
+  }, [imagesLoaded]);
 
   // Modal animations
   useEffect(() => {
     if (isModalOpen && modalRef.current && formRef.current) {
-      gsap.fromTo(modalRef.current, { opacity: 0 }, { opacity: 1, duration: 0.3 });
+      document.body.style.overflow = 'hidden';
+      gsap.fromTo(modalRef.current, { opacity: 0 }, { opacity: 1, duration: 0.2 });
       gsap.fromTo(formRef.current,
-        { scale: 0.8, y: 50, opacity: 0, rotateX: -15 },
-        { scale: 1, y: 0, opacity: 1, rotateX: 0, duration: 0.6, ease: 'back.out(1.7)' }
+        { scale: 0.9, opacity: 0 },
+        { scale: 1, opacity: 1, duration: 0.3, ease: 'power2.out' }
       );
+    } else {
+      document.body.style.overflow = 'unset';
     }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
   }, [isModalOpen]);
 
   const handleSearch = () => {
-    gsap.to(searchBoxRef.current.querySelector('button'), {
-      scale: 0.95,
-      duration: 0.1,
-      yoyo: true,
-      repeat: 1
-    });
-
     const mode = activeTab.toLowerCase();
     const selectedLocation = location !== 'Noida (All Sectors)' ? location : search.trim();
     const selectedType = propertyType !== 'Property Type' ? propertyType : '';
@@ -172,37 +239,29 @@ const HeroBanner = () => {
 
     let path = '/';
 
-    // If search has a valid location from suggestions
     if (searchQuery && getUniqueLocations().includes(searchQuery)) {
       path = `/filtered-location?location=${encodeURIComponent(searchQuery)}&mode=${mode}`;
     }
-    // Both location and type selected
     else if (selectedLocation && selectedType) {
       path = `/filtered-combined?location=${encodeURIComponent(selectedLocation)}&type=${encodeURIComponent(selectedType)}&mode=${mode}`;
     }
-    // Only location selected
     else if (selectedLocation) {
       path = `/filtered-location?location=${encodeURIComponent(selectedLocation)}&mode=${mode}`;
     }
-    // Only type selected
     else if (selectedType) {
       path = `/filtered-type?type=${encodeURIComponent(selectedType)}&mode=${mode}`;
     }
-    // General search query
     else if (searchQuery) {
       path = `/search?q=${encodeURIComponent(searchQuery)}&mode=${mode}`;
     }
-    // Only mode selected
     else {
       path = `/properties?mode=${mode}`;
     }
 
-    console.log('Navigating to:', path);
     navigate(path);
   };
 
   const handleTabClick = (tab) => {
-    gsap.to(tabsRef.current, { scale: 0.98, duration: 0.1, yoyo: true, repeat: 1 });
     setActiveTab(tab);
   };
 
@@ -214,16 +273,14 @@ const HeroBanner = () => {
   const closeModal = () => {
     if (modalRef.current && formRef.current) {
       gsap.to(formRef.current, {
-        scale: 0.8,
-        y: 50,
+        scale: 0.9,
         opacity: 0,
-        rotateX: -15,
-        duration: 0.4,
-        ease: 'back.in(1.7)'
+        duration: 0.2,
+        ease: 'power1.in'
       });
       gsap.to(modalRef.current, {
         opacity: 0,
-        duration: 0.3,
+        duration: 0.2,
         onComplete: () => {
           setIsModalOpen(false);
           setFormData({ name: '', mobile: '' });
@@ -287,50 +344,57 @@ const HeroBanner = () => {
       className="relative min-h-[85vh] overflow-hidden" 
       style={{ marginTop: '80px' }}
     >
-      {/* Premium Ken Burns Carousel Background */}
-      <div ref={carouselRef} className="absolute inset-0 overflow-hidden">
-        {carouselImages.map((img, index) => (
-          <div key={index} className="carousel-image absolute inset-0 w-full h-full">
+      {/* Optimized Ken Burns Carousel Background */}
+      <div ref={carouselRef} className="absolute inset-0 overflow-hidden bg-gray-900">
+        {imagesLoaded ? (
+          carouselImages.map((img, index) => (
             <div 
-              className="w-full h-full bg-cover bg-center"
-              style={{ 
-                backgroundImage: `url(${img})`,
-                filter: 'brightness(0.85) contrast(1.1)',
-              }}
-            />
-          </div>
-        ))}
+              key={index} 
+              className="carousel-image absolute inset-0 w-full h-full"
+              style={{ willChange: index === currentSlide ? 'transform, opacity' : 'auto' }}
+            >
+              <div 
+                className="w-full h-full bg-cover bg-center"
+                style={{ 
+                  backgroundImage: `url(${img})`,
+                  filter: 'brightness(0.85) contrast(1.1)',
+                }}
+              />
+            </div>
+          ))
+        ) : (
+          // Placeholder while images load
+          <div className="absolute inset-0 bg-gradient-to-br from-[#1C244B] to-[#0a0f24]" />
+        )}
         
         <div className="absolute inset-0 bg-gradient-to-tr from-black/40 via-transparent to-black/20"></div>
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/30"></div>
       </div>
 
-      {/* Enhanced Gradient Overlay */}
+      {/* Simplified Gradient Overlay */}
       <div 
         ref={overlayRef}
         className="absolute inset-0 bg-gradient-to-br from-[#1C244B]/25 via-[#1C244B]/30 to-[#0a0f24]/20"
       >
-        {/* Premium animated light particles - Hidden on mobile */}
-        <div className="absolute inset-0 hidden md:block">
-          <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white/60 rounded-full animate-pulse shadow-lg shadow-white/50"></div>
-          <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-white/40 rounded-full animate-pulse shadow-lg shadow-white/30" style={{ animationDelay: '0.7s' }}></div>
-          <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-white/50 rounded-full animate-pulse shadow-lg shadow-white/40" style={{ animationDelay: '1.4s' }}></div>
-          <div className="absolute bottom-1/4 right-1/4 w-2 h-2 bg-white/45 rounded-full animate-pulse shadow-lg shadow-white/35" style={{ animationDelay: '2.1s' }}></div>
-          <div className="absolute top-1/2 left-1/2 w-1 h-1 bg-white/55 rounded-full animate-pulse shadow-lg shadow-white/45" style={{ animationDelay: '2.8s' }}></div>
+        {/* Reduced light particles for performance */}
+        <div className="absolute inset-0 hidden md:block pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-1 h-1 bg-white/60 rounded-full animate-pulse"></div>
+          <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-white/40 rounded-full animate-pulse" style={{ animationDelay: '0.7s' }}></div>
+          <div className="absolute bottom-1/3 left-1/3 w-1.5 h-1.5 bg-white/50 rounded-full animate-pulse" style={{ animationDelay: '1.4s' }}></div>
         </div>
         
-        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-radial from-[#2a3561]/30 to-transparent blur-3xl animate-pulse" style={{ animationDuration: '4s' }}></div>
-        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-[#1C244B]/40 to-transparent blur-3xl animate-pulse" style={{ animationDuration: '5s', animationDelay: '1s' }}></div>
+        <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-gradient-radial from-[#2a3561]/30 to-transparent blur-3xl opacity-70" style={{ animationDuration: '4s' }}></div>
+        <div className="absolute bottom-0 left-0 w-1/2 h-1/2 bg-gradient-radial from-[#1C244B]/40 to-transparent blur-3xl opacity-70" style={{ animationDuration: '5s', animationDelay: '1s' }}></div>
       </div>
       
       <div className="relative container mx-auto px-4 sm:px-6 min-h-[85vh] flex flex-col justify-center items-center text-white text-center z-10 py-8">
         {/* Compact Heading */}
-        <h2 
+        <h1 
           ref={headingRef}
           className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-2 sm:mb-3 tracking-tight drop-shadow-2xl px-4"
         >
           Find Your Premium Office Space
-        </h2>
+        </h1>
         
         {/* Compact Subtitle */}
         <p 
@@ -347,9 +411,9 @@ const HeroBanner = () => {
         >
           <button 
             onClick={() => handleTabClick('BUY')} 
-            className={`flex-1 px-3 sm:px-6 py-1.5 sm:py-2 rounded-md sm:rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${
+            className={`flex-1 px-3 sm:px-6 py-1.5 sm:py-2 rounded-md sm:rounded-lg text-xs sm:text-sm font-semibold transition-colors duration-200 ${
               activeTab === 'BUY' 
-                ? 'bg-white text-[#1C244B] shadow-xl scale-105' 
+                ? 'bg-white text-[#1C244B] shadow-lg' 
                 : 'text-white hover:bg-white/10'
             }`}
           >
@@ -357,9 +421,9 @@ const HeroBanner = () => {
           </button>
           <button 
             onClick={() => handleTabClick('LEASE')} 
-            className={`flex-1 px-3 sm:px-6 py-1.5 sm:py-2 rounded-md sm:rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${
+            className={`flex-1 px-3 sm:px-6 py-1.5 sm:py-2 rounded-md sm:rounded-lg text-xs sm:text-sm font-semibold transition-colors duration-200 ${
               activeTab === 'LEASE' 
-                ? 'bg-white text-[#1C244B] shadow-xl scale-105' 
+                ? 'bg-white text-[#1C244B] shadow-lg' 
                 : 'text-white hover:bg-white/10'
             }`}
           >
@@ -367,9 +431,9 @@ const HeroBanner = () => {
           </button>
           <button 
             onClick={() => handleTabClick('PRE-LEASED')} 
-            className={`flex-1 px-3 sm:px-6 py-1.5 sm:py-2 rounded-md sm:rounded-lg text-xs sm:text-sm font-semibold transition-all duration-300 ${
+            className={`flex-1 px-3 sm:px-6 py-1.5 sm:py-2 rounded-md sm:rounded-lg text-xs sm:text-sm font-semibold transition-colors duration-200 ${
               activeTab === 'PRE-LEASED' 
-                ? 'bg-white text-[#1C244B] shadow-xl scale-105' 
+                ? 'bg-white text-[#1C244B] shadow-lg' 
                 : 'text-white hover:bg-white/10'
             }`}
           >
@@ -388,7 +452,7 @@ const HeroBanner = () => {
               <select 
                 value={location} 
                 onChange={(e) => setLocation(e.target.value)} 
-                className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border-2 border-gray-200 text-[#1C244B] w-full font-medium focus:border-[#1C244B] focus:outline-none focus:ring-2 focus:ring-[#1C244B]/20 transition-all duration-300 cursor-pointer hover:border-[#1C244B]/50 shadow-sm text-xs sm:text-sm"
+                className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border-2 border-gray-200 text-[#1C244B] w-full font-medium focus:border-[#1C244B] focus:outline-none focus:ring-2 focus:ring-[#1C244B]/20 transition-colors duration-200 cursor-pointer hover:border-[#1C244B]/50 shadow-sm text-xs sm:text-sm"
               >
                 <option>Noida (All Sectors)</option>
                 {noidaSectors.map(sec => (
@@ -399,7 +463,7 @@ const HeroBanner = () => {
               <select 
                 value={propertyType} 
                 onChange={(e) => setPropertyType(e.target.value)} 
-                className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border-2 border-gray-200 text-[#1C244B] w-full font-medium focus:border-[#1C244B] focus:outline-none focus:ring-2 focus:ring-[#1C244B]/20 transition-all duration-300 cursor-pointer hover:border-[#1C244B]/50 shadow-sm text-xs sm:text-sm"
+                className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border-2 border-gray-200 text-[#1C244B] w-full font-medium focus:border-[#1C244B] focus:outline-none focus:ring-2 focus:ring-[#1C244B]/20 transition-colors duration-200 cursor-pointer hover:border-[#1C244B]/50 shadow-sm text-xs sm:text-sm"
               >
                 <option>Property Type</option>
                 <option>IT</option>
@@ -420,7 +484,7 @@ const HeroBanner = () => {
                 onKeyPress={handleKeyPress}
                 onFocus={() => search.trim().length > 0 && suggestions.length > 0 && setShowSuggestions(true)}
                 placeholder="Search by sector or locality"
-                className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border-2 border-gray-200 text-[#1C244B] w-full font-medium focus:border-[#1C244B] focus:outline-none focus:ring-2 focus:ring-[#1C244B]/20 transition-all duration-300 placeholder:text-gray-400 hover:border-[#1C244B]/50 shadow-sm text-xs sm:text-sm"
+                className="px-3 sm:px-4 py-2 sm:py-2.5 rounded-lg border-2 border-gray-200 text-[#1C244B] w-full font-medium focus:border-[#1C244B] focus:outline-none focus:ring-2 focus:ring-[#1C244B]/20 transition-colors duration-200 placeholder:text-gray-400 hover:border-[#1C244B]/50 shadow-sm text-xs sm:text-sm"
               />
               
               {/* Suggestions Dropdown */}
@@ -430,7 +494,7 @@ const HeroBanner = () => {
                     <div
                       key={index}
                       onClick={() => handleSuggestionClick(suggestion)}
-                      className="px-3 py-1.5 hover:bg-[#1C244B] hover:text-white cursor-pointer transition-all duration-200 text-[#1C244B] font-medium border-b border-gray-100 last:border-b-0 text-xs"
+                      className="px-3 py-1.5 hover:bg-[#1C244B] hover:text-white cursor-pointer transition-colors duration-150 text-[#1C244B] font-medium border-b border-gray-100 last:border-b-0 text-xs"
                     >
                       📍 {suggestion}
                     </div>
@@ -442,10 +506,10 @@ const HeroBanner = () => {
             {/* Search Button */}
             <button 
               onClick={handleSearch} 
-              className="group relative bg-gradient-to-r from-[#1C244B] to-[#2a3561] text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-bold text-xs sm:text-sm transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 w-full overflow-hidden"
+              className="group relative bg-gradient-to-r from-[#1C244B] to-[#2a3561] text-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-lg font-bold text-xs sm:text-sm transition-all duration-200 shadow-xl hover:shadow-2xl hover:scale-105 w-full overflow-hidden"
             >
               <span className="relative z-10">SEARCH PROPERTY</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-[#2a3561] to-[#1C244B] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-[#2a3561] to-[#1C244B] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
             </button>
           </div>
         </div>
@@ -454,36 +518,29 @@ const HeroBanner = () => {
         <div ref={ctaRef} className="mt-6 sm:mt-8">
           <button 
             onClick={openModal}
-            className="group relative bg-white text-[#1C244B] px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-bold text-sm sm:text-base shadow-2xl hover:shadow-3xl transition-all duration-300 cursor-pointer overflow-hidden"
-            onMouseEnter={(e) => gsap.to(e.currentTarget, { scale: 1.1, duration: 0.3 })}
-            onMouseLeave={(e) => gsap.to(e.currentTarget, { scale: 1, duration: 0.3 })}
+            className="group relative bg-white text-[#1C244B] px-6 sm:px-8 py-2 sm:py-3 rounded-lg font-bold text-sm sm:text-base shadow-2xl hover:shadow-3xl transition-all duration-200 cursor-pointer overflow-hidden hover:scale-105"
           >
             <span className="relative z-10">Enquire Now</span>
-            <div className="absolute inset-0 bg-gradient-to-r from-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-            <div className="absolute inset-0 opacity-0 group-hover:opacity-100">
-              <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-r from-transparent via-[#1C244B]/10 to-transparent transform -translate-x-full group-hover:translate-x-full transition-transform duration-700"></div>
-            </div>
+            <div className="absolute inset-0 bg-gradient-to-r from-gray-50 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
           </button>
         </div>
       </div>
 
-      {/* Compact Modal */}
+      {/* Optimized Modal */}
       {isModalOpen && (
         <div
           ref={modalRef}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-md px-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur-sm px-4"
           onClick={closeModal}
-          style={{ perspective: '1000px' }}
         >
           <div
             ref={formRef}
             className="bg-white rounded-xl sm:rounded-2xl shadow-2xl p-5 sm:p-6 md:p-8 max-w-sm w-full relative"
             onClick={(e) => e.stopPropagation()}
-            style={{ transformStyle: 'preserve-3d' }}
           >
             <button
               onClick={closeModal}
-              className="absolute top-3 right-3 sm:top-4 sm:right-4 text-gray-400 hover:text-gray-600 hover:rotate-90 transition-all duration-300"
+              className="absolute top-3 right-3 sm:top-4 sm:right-4 text-gray-400 hover:text-gray-600 hover:rotate-90 transition-all duration-200"
             >
               <FaTimes size={18} className="sm:w-5 sm:h-5" />
             </button>
@@ -504,7 +561,7 @@ const HeroBanner = () => {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1C244B] focus:outline-none focus:ring-2 focus:ring-[#1C244B]/20 transition-all duration-300 text-xs sm:text-sm"
+                  className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1C244B] focus:outline-none focus:ring-2 focus:ring-[#1C244B]/20 transition-colors duration-200 text-xs sm:text-sm"
                   placeholder="Enter your name"
                 />
               </div>
@@ -521,13 +578,13 @@ const HeroBanner = () => {
                   required
                   maxLength={10}
                   pattern="[0-9]{10}"
-                  className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1C244B] focus:outline-none focus:ring-2 focus:ring-[#1C244B]/20 transition-all duration-300 text-xs sm:text-sm"
+                  className="w-full px-3 py-2 border-2 border-gray-200 rounded-lg focus:border-[#1C244B] focus:outline-none focus:ring-2 focus:ring-[#1C244B]/20 transition-colors duration-200 text-xs sm:text-sm"
                   placeholder="Enter 10-digit mobile number"
                 />
               </div>
 
               {submitStatus === 'success' && (
-                <div className="bg-green-50 border-2 border-green-500 text-green-700 px-3 py-2 rounded-lg text-center font-semibold animate-pulse text-xs sm:text-sm">
+                <div className="bg-green-50 border-2 border-green-500 text-green-700 px-3 py-2 rounded-lg text-center font-semibold text-xs sm:text-sm">
                   ✓ Enquiry submitted successfully!
                 </div>
               )}
@@ -541,10 +598,10 @@ const HeroBanner = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="group relative w-full py-2.5 sm:py-3 bg-gradient-to-r from-[#1C244B] to-[#2a3561] text-white font-bold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden text-xs sm:text-sm"
+                className="group relative w-full py-2.5 sm:py-3 bg-gradient-to-r from-[#1C244B] to-[#2a3561] text-white font-bold rounded-lg shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200 disabled:opacity-50 disabled:cursor-not-allowed overflow-hidden text-xs sm:text-sm"
               >
                 <span className="relative z-10">{isSubmitting ? 'Submitting...' : 'Submit Enquiry'}</span>
-                <div className="absolute inset-0 bg-gradient-to-r from-[#2a3561] to-[#1C244B] opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="absolute inset-0 bg-gradient-to-r from-[#2a3561] to-[#1C244B] opacity-0 group-hover:opacity-100 transition-opacity duration-200"></div>
               </button>
             </form>
           </div>
