@@ -86,5 +86,149 @@
     "availableFor": ["lease"],
     "image": "https://newprojects.99acres.com/projects/wave_infratech/wave_business_tower_1_/images/main.jpg",
     "description": "Luxury office suites for executives."
+  },
+   {
+    "id": 9,
+    "name": "Sovereign Corporate",
+    "location": "Sector 136",
+    "type": "Office Space",
+    "category": "Office Space",
+    "size": "15,500 sqft – 2,50,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://daks2k3a4ib2z.cloudfront.net/59d49abaa9178f0001e41966/5a59efd8a0eb5000019bb75f_sovcompressed2-poster-00001.jpg",
+    "description": "Adjacent to Metro Station, Sector-136 Noida"
+  },
+    {
+    "id": 10,
+    "name": "Riana Aurum Tower",
+    "location": "Sector 136",
+    "type": "Office Space",
+    "category": "Office Space",
+    "size": "5,000 sqft – 7,500 sqft",
+    "availableFor": ["lease"],
+    "image": "https://boardwalkindia.com/wp-content/uploads/2022/12/1539862c41349a50bcRiana-Towers.jpg",
+    "description": "Adjacent to Metro Station, Sector-136 Noida"
+  },
+    {
+    "id": 11,
+    "name": "Riana Aureus Tower",
+    "location": "Sector 136",
+    "type": "Office Space",
+    "category": "Office Space",
+    "size": "5,000 sqft – 19,500 sqft",
+    "availableFor": ["lease"],
+    "image": "https://studiokhozi.com/wp-content/uploads/2022/10/raina-8-1152x785.jpg",
+    "description": "Adjacent to Metro Station, Sector-136 Noida"
+  },
+      {
+    "id": 12,
+    "name": "Candor Techspace Tower",
+    "location": "Sector 135",
+    "type": "Office Space",
+    "category": "Office Space",
+    "size": "10,000 sqft – 26,500 sqft",
+    "availableFor": ["lease"],
+    "image": "https://cf-cdn.cityinfoservices.com/public/uploads/projectBanner/large/Candor%20TechSpace%20Sector%20135%20-%20Tower%2011%20(Noida)__1001992939.jpg",
+    "description": "Adjacent to Metro Station, Sector-142 Noida"
+  },
+  {
+    "id": 13,
+    "name": "Assotech Business Tower",
+    "location": "Sector 135",
+    "type": "Office Space",
+    "category": "Office Space",
+    "size": "2,000 sqft – 19,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://cf-cdn.cityinfoservices.com/public/uploads/projectBanner/large/Assotech%20Business%20Cresterra%20-%20Noida(1)__668753679.jpg",
+    "description": "Adjacent to Metro Station, Sector-142 Noida"
+  },
+    {
+    "id": 14,
+    "name": "Opulence Tower",
+    "location": "Sector 135",
+    "type": "Office Space",
+    "category": "Office Space",
+    "size": "3,000 sqft – 18,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://leaseinaday.com/wp-content/uploads/2025/07/Workwell-max-square6-400x314.png",
+    "description": "Adjacent to Metro Station, Sector-142 Noida"
+  },
+  {
+    "id": 15,
+    "name": "The Opus",
+    "location": "Sector 132",
+    "type": "Office Space",
+    "category": "Office Space",
+    "size": "5,000 sqft – 23,800 sqft",
+    "availableFor": ["lease"],
+    "image": "https://zentraspace.com/wp-content/uploads/2025/06/Image2.webp",
+    "description": "Adjacent to Metro Station, Sector-142 Noida"
+  },
+   {
+    "id": 16,
+    "name": "Urbtech trade center",
+    "location": "Sector 132",
+    "type": "Office Space",
+    "category": "Office Space",
+    "size": "2,000 sqft – 12,500 sqft",
+    "availableFor": ["lease"],
+    "image": "https://boardwalkindia.com/wp-content/uploads/2022/07/utc_9.jpg",
+    "description": "Adjacent to Metro Station, Sector-142 Noida"
+  },
+  {
+    "id": 17,
+    "name": "Delphi Tower",
+    "location": "Sector 132",
+    "type": "Office Space",
+    "category": "Office Space",
+    "size": "9,527 sqft – 29,732 sqft",
+    "availableFor": ["lease"],
+    "image": "https://cf-cdn.cityinfoservices.com/public/uploads/project/images/default/large/5054766ab62a636eb6Delphi%20Tower%20-%20Noida.jpg",
+    "description": "Adjacent to Metro Station, Sector-142 Noida"
+  },
+    {
+    "id": 18,
+    "name": "Express Trade Tower",
+    "location": "Sector 132",
+    "type": "Office Space",
+    "category": "Office Space",
+    "size": "5,527 sqft – 50,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://propliners.in/public/uploads/property/1755066675_express-trade-tower-2-sector-132-noida.webp",
+    "description": "Adjacent to Metro Station, Sector-142 Noida"
+  },
+  {
+    "id": 19,
+    "name": "Ace Capital",
+    "location": "Sector 132",
+    "type": "Office Space",
+    "category": "Office Space",
+    "size": "16,125 sqft – 25,600 sqft",
+    "availableFor": ["lease"],
+    "image": "https://boardwalkindia.com/wp-content/uploads/2022/06/Ace-Capitol-Sector-132.webp",
+    "description": "Adjacent to Metro Station, Sector-142 Noida"
+  },
+  {
+    "id": 20,
+    "name": "Max Square",
+    "location": "Sector 129",
+    "type": "Office Space",
+    "category": "Office Space",
+    "size": "5,527 sqft – 53,551 sqft",
+    "availableFor": ["lease"],
+    "image": "https://maxestates-in.b-cdn.net/wp-content/uploads/2024/01/ms-spotlight-1.jpg",
+    "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
+  },
+    {
+    "id": 21,
+    "name": "Gulshan One29",
+    "location": "Sector 129",
+    "type": "Office Space",
+    "category": "Office Space",
+    "size": "3,527 sqft – 27,800 sqft",
+    "availableFor": ["lease"],
+    "image": "https://www.gulshanone29.com/images/overview.webp",
+    "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
   }
+
 ]
