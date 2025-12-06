@@ -15,7 +15,7 @@ const Home = () => {
      
       <PropertyTypes />
        <ConnectSection />
-      <FeaturedProperties />
+      {/* <FeaturedProperties /> */}
       <Projects />
       <WhyChooseUs />
       {/* <Testimonials /> */}

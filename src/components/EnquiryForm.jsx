@@ -137,7 +137,7 @@ const EnquiryForm = () => {
       </div>
 
       <div className="container mx-auto px-6 text-center relative z-10">
-        <h2 ref={headingRef} className="text-5xl font-bold text-white mb-4">
+        <h2 ref={headingRef} className="text-3xl lg:text-5xl font-bold text-white mb-4">
           Ready to Find Your Perfect Office?
         </h2>
         <p className="text-xl text-white/80 mb-12 max-w-3xl mx-auto">

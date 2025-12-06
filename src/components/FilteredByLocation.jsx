@@ -515,7 +515,7 @@ const FilteredByLocation = () => {
                     <svg className="w-5 h-5 text-[#1C244B] flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h4a1 1 0 011 1v14a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM16 5a1 1 0 011-1h2a1 1 0 011 1v14a1 1 0 01-1 1h-2a1 1 0 01-1-1V5z" />
                     </svg>
-                    <p className="text-3xl font-bold text-[#1C244B]">{p.size}</p>
+                    <p className="sm:text-md lg:text-xl font-bold text-[#1C244B]">{p.size}</p>
                   </div>
 
                   <button 

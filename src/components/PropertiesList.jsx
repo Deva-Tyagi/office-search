@@ -285,13 +285,13 @@ const PropertiesList = () => {
                     <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
                       <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" /></svg>
                     </div>
-                    <div><p className="text-xs text-gray-300">Property Expert</p><p className="font-semibold text-sm">Rohit Kakkar</p></div>
+                    <div><p className="text-md font-semibold text-gray-300">Talk To Our Property Expert</p><p className="font-semibold text-sm"></p></div>
                   </div>
                   <button onClick={handleCall} className="w-full flex items-center gap-2 bg-white/10 hover:bg-white/20 rounded-lg p-2.5 transition-colors duration-300">
                     <div className="w-8 h-8 bg-white/10 rounded-lg flex items-center justify-center flex-shrink-0">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                     </div>
-                    <div className="text-left"><p className="text-xs text-gray-300">Call Now</p><p className="font-semibold text-sm">+91-9205596640</p></div>
+                    <div className="text-left"><p className="text-xs text-gray-300">Call Now</p><p className="font-semibold text-sm">+91-9205596641</p></div>
                   </button>
                   <button onClick={handleWhatsApp} className="w-full flex items-center gap-2 bg-green-600 hover:bg-green-700 rounded-lg p-2.5 transition-colors duration-300">
                     <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center flex-shrink-0">

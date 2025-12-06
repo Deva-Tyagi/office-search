@@ -34,9 +34,9 @@ export default function AboutUsBanner() {
           transition: 'transform 0.1s ease-out'
         }}
       >
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/90 via-gray-900/70 to-gray-900/90 z-10"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/20 via-gray-900/60 to-gray-900/20 z-10"></div>
         <img 
-          src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=1920&h=1080&fit=crop" 
+          src='/osG2.jpg' 
           alt="Modern Office Space"
           className="w-full h-full object-cover"
         />
@@ -83,7 +83,7 @@ export default function AboutUsBanner() {
             <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-6 leading-tight">
               Building Your
               <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#1C244B] to-blue-600">
+              <span className="text-transparent bg-clip-text bg-blue-600">
                 Business Future
               </span>
             </h1>
@@ -94,7 +94,7 @@ export default function AboutUsBanner() {
               isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'
             }`}
           >
-            <p className="text-gray-300 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
+            <p className="text-gray-200 text-lg md:text-xl max-w-3xl mx-auto leading-relaxed">
               We are a premier commercial real estate company dedicated to providing 
               exceptional office spaces, managed facilities, and warehouse solutions 
               that empower businesses to thrive.
@@ -121,7 +121,7 @@ export default function AboutUsBanner() {
                   {stat.number}
                 </h3>
                 <div className="h-1 w-16 bg-gradient-to-r from-[#1C244B] to-blue-600 mx-auto mb-3 group-hover:w-20 transition-all duration-300"></div>
-                <p className="text-gray-400 text-sm md:text-base uppercase tracking-wide">
+                <p className="text-gray-100 text-sm md:text-base uppercase tracking-wide">
                   {stat.label}
                 </p>
               </div>

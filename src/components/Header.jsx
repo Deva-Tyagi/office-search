@@ -165,7 +165,7 @@ const Header = () => {
           {/* Contact Badge */}
           <a
             ref={contactRef}
-            href="tel:+919205596640"
+            href="tel:+919205596641"
             className="flex items-center gap-2 px-4 py-2 bg-gray-50 rounded-xl border border-gray-200 hover:border-[#1C244B] hover:bg-[#1C244B]/5 transition-all duration-300 group"
           >
             <div className="flex items-center gap-2">
@@ -176,7 +176,7 @@ const Header = () => {
               </div>
               <div className="text-left">
                 <p className="text-xs text-gray-500 font-medium">Contact Us</p>
-                <p className="text-sm font-bold text-[#1C244B] group-hover:text-[#2a3561]">+91 9205596640</p>
+                <p className="text-sm font-bold text-[#1C244B] group-hover:text-[#2a3561]">+91 9205596641</p>
               </div>
             </div>
           </a>
@@ -220,7 +220,7 @@ const Header = () => {
           
           {/* Mobile Contact Number */}
           <a
-            href="tel:+919205596640"
+            href="tel:+919205596641"
             className="flex items-center gap-3 px-4 py-3 bg-gray-50 rounded-xl border border-gray-200"
           >
             <div className="w-10 h-10 rounded-full bg-[#1C244B] flex items-center justify-center">
@@ -230,7 +230,7 @@ const Header = () => {
             </div>
             <div className="text-left">
               <p className="text-xs text-gray-500 font-medium">Contact Us</p>
-              <p className="text-base font-bold text-[#1C244B]">+91 9205596640</p>
+              <p className="text-base font-bold text-[#1C244B]">+91 9205596641</p>
             </div>
           </a>
 

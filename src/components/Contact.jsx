@@ -95,7 +95,7 @@ export default function ContactPage() {
     {
       icon: <Phone className="w-6 h-6" />,
       title: 'Call Us',
-      details: ['+91 920 559 6640', '+91 920 559 6641'],
+      details: ['+91 920 559 6641','+91 920 559 6640'],
       color: 'from-emerald-500 to-emerald-600'
     },
     {
@@ -107,7 +107,7 @@ export default function ContactPage() {
     {
       icon: <Clock className="w-6 h-6" />,
       title: 'Business Hours',
-      details: ['Mon - Sat: 9:00 AM - 6:00 PM', 'Sun: 10:00 AM - 4:00 PM'],
+      details: ['Mon - Sat: 10:00 AM - 6:30 PM', 'Sun: Closed'],
       color: 'from-amber-500 to-amber-600'
     }
   ];
@@ -222,7 +222,7 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-5">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                <div className="grid grid-cols-1 md:grid-cols-1 gap-5">
                   <div>
                     <label className="block text-sm font-bold mb-2 text-[#1C244B]">
                       Full Name <span className="text-red-500">*</span>
@@ -287,35 +287,9 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-sm font-bold mb-2 text-[#1C244B]">
-                    Subject <span className="text-red-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-[#1C244B]/10 focus:border-[#1C244B] transition-all duration-300 bg-gray-50 hover:bg-white"
-                    placeholder="How can we help you?"
-                  />
-                </div>
+               
 
-                <div>
-                  <label className="block text-sm font-bold mb-2 text-[#1C244B]">
-                    Message <span className="text-red-500">*</span>
-                  </label>
-                  <textarea
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows="5"
-                    className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-[#1C244B]/10 focus:border-[#1C244B] transition-all duration-300 resize-none bg-gray-50 hover:bg-white"
-                    placeholder="Tell us more about your requirements..."
-                  ></textarea>
-                </div>
+                
 
                 {status.message && (
                   <div className={`p-4 rounded-xl flex items-center gap-3 border-2 ${

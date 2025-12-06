@@ -133,7 +133,7 @@ export default function PrimeDestinationSection() {
         </div>
 
         {/* Contact Section */}
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+        <div className="flex flex-col md:flex-row items-start lg:items-center justify-center gap-6">
           <button 
             className="text-white px-8 py-4 rounded font-semibold hover:opacity-90 transition-opacity flex items-center gap-2"
             style={{ backgroundColor: '#1C244B' }}
@@ -152,7 +152,7 @@ export default function PrimeDestinationSection() {
               <p className="text-sm font-semibold" style={{ color: '#1C244B' }}>
                 Call Us Anytime
               </p>
-              <p className="text-gray-600">+91 9205596640</p>
+              <p className="text-gray-600">+91 9205596641</p>
             </div>
           </div>
 

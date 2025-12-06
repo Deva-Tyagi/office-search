@@ -9,7 +9,7 @@ const noidaSectors = [
   "Sector 1", "Sector 2", "Sector 3", "Sector 4", "Sector 5", "Sector 6","Sector 7", "Sector 8","Sector 9",
   "Sector 10","Sector 11", "Sector 16", "Sector 16A", "Sector 18", "Sector 62","Sector 57", "Sector 58", "Sector 59","Sector 60","Sector 62",
   "Sector 63", "Sector 64", "Sector 65", "Sector 67", "Sector 68","Sector 80","Sector 81","Sector 83","Sector 85","Sector 125", "Sector 126", "Sector 127", "Sector 128","Sector 129",  "Sector 132",
-  "Sector 135", "Sector 142", "Sector 144","Sector 151", "Sector 153", "Sector 168","Sector 88","Sector 90","Sector 84","Sector 87", "Sector 138", "Sector 140","Sector 140A","Hosiery Complex","Phase 2","Sector 155","Sector 154","Sector 153","Sector 156","Sector157","Sector 158","Sector 159","Sector 160","NECZ","Ecotech I","Ecotech II","Ecotech III","Ecotech I Extension 1","Ecotech I Extension 1","Ecotech V","Site 4", "Site 5","Ecotech VI","Ecotech VIII","Ecotech X","Ecotech XI","Ecotech XII","Ecotech XVI","Site B","Site C","Sector 31 GrNoida","Sector 41 GrNoida","Techzone","Techzone II","Techzone III","Techzone IV","Techzone V"
+  "Sector 135", "Sector 142", "Sector 144","Sector 151", "Sector 153", "Sector 168","Sector 88","Sector 90","Sector 84","Sector 87", "Sector 138", "Sector 140","Sector 140A","Hosiery Complex","Phase 2","Sector 155","Sector 154","Sector 153","Sector 156","Sector157","Sector 158","Sector 159","Sector 160","NSEZ","Ecotech I","Ecotech II","Ecotech III","Ecotech I Extension 1","Ecotech I Extension 1","Ecotech V","Site 4", "Site 5","Ecotech VI","Ecotech VIII","Ecotech X","Ecotech XI","Ecotech XII","Ecotech XVI","Site B","Site C","Sector 31 GrNoida","Sector 41 GrNoida","Techzone","Techzone II","Techzone III","Techzone IV","Techzone V"
 ];
 
 const HeroBanner = () => {
@@ -29,8 +29,8 @@ const HeroBanner = () => {
 
   // Optimized image sources - use optimized versions
   const carouselImages = [
-    '/os1.jpg',
-    '/os2.jpg',
+    '/osG3.jpg',
+    '/osG1.jpg',
     '/os3.jpg',
     '/os4.jpg'
   ];
@@ -357,7 +357,7 @@ const HeroBanner = () => {
                 className="w-full h-full bg-cover bg-center"
                 style={{ 
                   backgroundImage: `url(${img})`,
-                  filter: 'brightness(0.85) contrast(1.1)',
+                  filter: 'brightness(0.95) contrast(1.1)',
                 }}
               />
             </div>
@@ -374,7 +374,7 @@ const HeroBanner = () => {
       {/* Simplified Gradient Overlay */}
       <div 
         ref={overlayRef}
-        className="absolute inset-0 bg-gradient-to-br from-[#1C244B]/25 via-[#1C244B]/30 to-[#0a0f24]/20"
+        className="absolute inset-0 bg-gradient-to-br from-[#1C244B]/15 via-[#1C244B]/30 to-[#0a0f24]/15"
       >
         {/* Reduced light particles for performance */}
         <div className="absolute inset-0 hidden md:block pointer-events-none">
@@ -401,7 +401,7 @@ const HeroBanner = () => {
           ref={subtitleRef}
           className="text-sm sm:text-base md:text-lg mb-6 sm:mb-8 text-white/90 max-w-2xl drop-shadow-lg px-4"
         >
-          Discover premium commercial spaces across Noida
+          Discover Premium Commercial Spaces Across Noida
         </p>
         
         {/* Compact Tabs */}

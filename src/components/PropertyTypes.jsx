@@ -144,7 +144,7 @@ const PropertyTypes = () => {
       
       <div className="container mx-auto px-6 relative z-10">
         <div className="text-center mb-16">
-          <h2 ref={headingRef} className="text-5xl font-bold mb-4 text-[#1C244B]">
+          <h2 ref={headingRef} className="text-3xl lg:text-5xl font-bold mb-4 text-[#1C244B]">
             Property Types We Offer
           </h2>
           <p ref={subtitleRef} className="text-lg text-gray-600 max-w-2xl mx-auto">

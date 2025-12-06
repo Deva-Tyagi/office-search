@@ -143,7 +143,7 @@ const WhyChooseUs = () => {
         </div>
 
         <div className="container mx-auto px-6 text-center relative z-10">
-          <h2 ref={headingRef} className="text-5xl font-bold mb-6">
+          <h2 ref={headingRef} className="text-3xl lg:text-5xl font-bold mb-6">
             Why Choose Office Search?
           </h2>
           <p className="text-xl text-white/80 mb-16 max-w-3xl mx-auto">
@@ -178,7 +178,7 @@ const WhyChooseUs = () => {
 
           {/* CTA Button */}
           <div className="mt-16 bg-white/10 backdrop-blur-md rounded-2xl p-8 border border-white/20 max-w-4xl mx-auto">
-            <h3 className="text-3xl font-bold mb-4">Ready to Find Your Perfect Space?</h3>
+            <h3 className="text-2xl lg:text-3xl font-bold mb-4">Ready to Find Your Perfect Space?</h3>
             <p className="text-white/80 mb-6 text-lg">
               Let our experts guide you to the ideal commercial property for your business
             </p>

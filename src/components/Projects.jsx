@@ -273,7 +273,7 @@ const Projects = () => {
             <span className="inline-block px-6 py-2 bg-[#1C244B] text-white text-sm font-bold rounded-full shadow-lg mb-6">
               PREMIUM PORTFOLIO
             </span>
-            <h2 ref={headingRef} className="text-7xl font-black mb-6 text-[#1C244B] leading-tight">
+            <h2 ref={headingRef} className="text-3xl lg:text-5xl font-black mb-6 text-[#1C244B] leading-tight">
               Exceptional Projects
             </h2>
             <p ref={taglineRef} className="text-xl text-gray-600 max-w-3xl mx-auto font-medium">
