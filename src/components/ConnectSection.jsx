@@ -153,7 +153,7 @@ const ConnectSection = () => {
               
               {/* Floating stats card */}
               <div className="absolute bottom-8 left-8 right-8 bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-xl">
-                <div className="grid grid-cols-3 gap-6 text-center">
+                <div className="grid grid-cols-3 gap-8 text-center">
                   <div>
                     <p className="sm:text-xl md:text-2xl lg:text-3xl font-black text-[#1C244B]">2M+</p>
                     <p className="text-xs text-gray-600 font-bold uppercase mt-1">Sq. Ft. Leased</p>
@@ -165,7 +165,7 @@ const ConnectSection = () => {
                   <div>
                     <p className="sm:text-xl md:text-2xl lg:text-3xl font-black text-[#1C244B]">15+</p>
                     <p className="text-xs text-gray-600 font-bold uppercase mt-1">Years</p>
-                  </div>
+                  </div> 
                 </div>
               </div>
             </div>

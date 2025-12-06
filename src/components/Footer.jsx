@@ -1,13 +1,29 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const Footer = () => {
+  const navigate = useNavigate();
   const footerRef = useRef(null);
   const contentRef = useRef(null);
+
+  // Same mapping as in PropertyTypes component
+  const typeMapping = {
+    "Office Spaces": "Office Spaces",
+    "Warehouses": "Warehouses",
+    "Retail Spaces": "Retail Leasing",
+    "Managed Offices": "Managed Offices"
+  };
+
+  const handlePropertyClick = (propertyName) => {
+    const searchCategory = typeMapping[propertyName];
+    if (searchCategory) {
+      navigate(`/filtered-type?type=${encodeURIComponent(searchCategory)}`);
+    }
+  };
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -90,19 +106,19 @@ const Footer = () => {
                 </Link>
               </li>
               <li>
-                <Link to = '/properties'className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <Link to="/properties" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <span className="w-1.5 h-1.5 bg-white/50 rounded-full group-hover:bg-white transition-colors"></span>
                   Properties
                 </Link>
               </li>
               <li>
-                <Link to = '/about' className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <Link to="/about" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <span className="w-1.5 h-1.5 bg-white/50 rounded-full group-hover:bg-white transition-colors"></span>
                   About Us
                 </Link>
               </li>
               <li>
-                <Link to = '/contact'className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <Link to="/contact" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
                   <span className="w-1.5 h-1.5 bg-white/50 rounded-full group-hover:bg-white transition-colors"></span>
                   Contact
                 </Link>
@@ -110,33 +126,45 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Property Types */}
+          {/* Property Types - NOW WORKING WITH REAL LINKS */}
           <div>
             <h3 className="text-xl font-bold mb-4">Property Types</h3>
             <ul className="space-y-3">
               <li>
-                <a href="#offices" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <button 
+                  onClick={() => handlePropertyClick("Office Spaces")}
+                  className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 group text-left w-full"
+                >
                   <span className="w-1.5 h-1.5 bg-white/50 rounded-full group-hover:bg-white transition-colors"></span>
                   Office Spaces
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#warehouses" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <button 
+                  onClick={() => handlePropertyClick("Warehouses")}
+                  className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 group text-left w-full"
+                >
                   <span className="w-1.5 h-1.5 bg-white/50 rounded-full group-hover:bg-white transition-colors"></span>
                   Warehouses
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#retail" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <button 
+                  onClick={() => handlePropertyClick("Retail Spaces")}
+                  className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 group text-left w-full"
+                >
                   <span className="w-1.5 h-1.5 bg-white/50 rounded-full group-hover:bg-white transition-colors"></span>
                   Retail Spaces
-                </a>
+                </button>
               </li>
               <li>
-                <a href="#managed" className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 group">
+                <button 
+                  onClick={() => handlePropertyClick("Managed Offices")}
+                  className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 group text-left w-full"
+                >
                   <span className="w-1.5 h-1.5 bg-white/50 rounded-full group-hover:bg-white transition-colors"></span>
                   Managed Offices
-                </a>
+                </button>
               </li>
             </ul>
           </div>
@@ -151,7 +179,7 @@ const Footer = () => {
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
                 <span className="text-white/70 text-sm leading-relaxed">
-                  Noida, Uttar Pradesh<br />India
+                  M Floor, WTT Tower, Sector 16, Noida, Uttar Pradesh<br />India
                 </span>
               </li>
               <li className="flex items-center gap-3">
@@ -166,7 +194,7 @@ const Footer = () => {
                 <svg className="w-5 h-5 text-white/70 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                 </svg>
-                <a href="tel:+919876543210" className="text-white/70 hover:text-white transition-colors text-sm">
+                <a href="tel:+919205596641" className="text-white/70 hover:text-white transition-colors text-sm">
                   +91 92055 96641
                 </a>
               </li>
@@ -180,7 +208,7 @@ const Footer = () => {
             {/* Social Links */}
             <div className="flex gap-4">
               <a 
-                href="#facebook" 
+                href="https://www.facebook.com/officesearchrealestatellp/" 
                 onMouseEnter={(e) => handleSocialHover(e, true)}
                 onMouseLeave={(e) => handleSocialHover(e, false)}
                 className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
@@ -191,18 +219,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a 
-                href="#twitter" 
-                onMouseEnter={(e) => handleSocialHover(e, true)}
-                onMouseLeave={(e) => handleSocialHover(e, false)}
-                className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
-                aria-label="Twitter"
-              >
-                <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
-                </svg>
-              </a>
-              <a 
-                href="#linkedin" 
+                href="https://www.linkedin.com/company/officesearchonline/?originalSubdomain=in" 
                 onMouseEnter={(e) => handleSocialHover(e, true)}
                 onMouseLeave={(e) => handleSocialHover(e, false)}
                 className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
@@ -213,7 +230,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a 
-                href="#instagram" 
+                href="https://www.instagram.com/office__search/" 
                 onMouseEnter={(e) => handleSocialHover(e, true)}
                 onMouseLeave={(e) => handleSocialHover(e, false)}
                 className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors duration-300"
