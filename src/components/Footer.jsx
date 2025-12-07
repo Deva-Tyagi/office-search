@@ -219,7 +219,7 @@ const Footer = () => {
                 </svg>
               </a>
               <a 
-                href="https://www.linkedin.com/company/officesearchonline/?originalSubdomain=in" 
+                href="https://www.linkedin.com/in/office-search-4736741b6?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" 
                 onMouseEnter={(e) => handleSocialHover(e, true)}
                 onMouseLeave={(e) => handleSocialHover(e, false)}
                 className="w-10 h-10 bg-white/10 rounded-lg flex items-center justify-center hover:bg-white/20 transition-colors duration-300"

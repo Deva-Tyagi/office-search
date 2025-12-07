@@ -107,7 +107,7 @@ export default function ContactPage() {
     {
       icon: <Clock className="w-6 h-6" />,
       title: 'Business Hours',
-      details: ['Mon - Sat: 10:00 AM - 6:30 PM', 'Sun: Closed'],
+      details: ['Mon - Sat: 09:30 AM - 6:30 PM', 'Sun: Closed'],
       color: 'from-amber-500 to-amber-600'
     }
   ];
@@ -234,7 +234,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-[#1C244B]/10 focus:border-[#1C244B] transition-all duration-300 bg-gray-50 hover:bg-white"
-                      placeholder="John Doe"
+                      placeholder=""
                     />
                   </div>
                   <div>
@@ -248,7 +248,7 @@ export default function ContactPage() {
                       onChange={handleChange}
                       required
                       className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-[#1C244B]/10 focus:border-[#1C244B] transition-all duration-300 bg-gray-50 hover:bg-white"
-                      placeholder="john@example.com"
+                      placeholder=""
                     />
                   </div>
                 </div>
@@ -264,7 +264,7 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={handleChange}
                       className="w-full px-4 py-3.5 border-2 border-gray-200 rounded-xl focus:outline-none focus:ring-4 focus:ring-[#1C244B]/10 focus:border-[#1C244B] transition-all duration-300 bg-gray-50 hover:bg-white"
-                      placeholder="+1 (555) 123-4567"
+                      placeholder=""
                     />
                   </div>
                   <div>
