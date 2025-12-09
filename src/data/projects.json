@@ -174,6 +174,293 @@
     "availableFor": ["lease"],
     "image": "https://www.gulshanone29.com/images/overview.webp",
     "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
+  },
+    {
+    "id": 17,
+    "name": "Tech Boulevard",
+    "location": "Sector 127",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "10,000 sqft – 26,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://jll-global-gdim-res.cloudinary.com/image/upload/f_avif,ar_1.0,c_fill,w_1920,q_auto/v1505553995/IN_ML20170916/Tech-Boulevard-A_4184_20170916_005.jpg",
+    "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
+  },
+   {
+    "id": 18,
+    "name": "Skymark One",
+    "location": "Sector 98",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "7,000 sqft – 35,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://skymarkonenoida.in/wp-content/uploads/2023/09/Skymark-one-sector-98-noida-1024x750.webp",
+    "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
+  },
+   {
+    "id": 19,
+    "name": "Sikka Kapital Grand",
+    "location": "Sector 98",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "5,500 sqft – 22,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://s3-ap-southeast-1.amazonaws.com/housingman-v2/projects/banner_images/5237/original/Sikka_Kapital_grand-Banner.jpg?1527939100",
+    "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
+  },
+   {
+    "id": 20,
+    "name": "IHDP Business Park",
+    "location": "Sector 127",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "1,000 sqft – 22,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://www.ihdp-india.com/wp-content/uploads/2022/12/ihdp-img-5.jpg",
+    "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
+  },
+   {
+    "id": 21,
+    "name": "Steller 127",
+    "location": "Sector 127",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "5,000 sqft – 22,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://stellarprojects.in/wp-content/uploads/2019/06/2.jpg",
+    "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
+  },
+   {
+    "id": 22,
+    "name": "Tirupati AKC Tower",
+    "location": "Sector 126",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "5,000 sqft – 24,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://res.cloudinary.com/myhq/image/upload/workspaces/plot-no--01a--noida-tirupati-akc-noidaextension/commercial-leasing/exterior/bhjzhg.jpg",
+    "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
+  },
+    {
+    "id": 23,
+    "name": "Tapasya Corp Heights",
+    "location": "Sector 126",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "5,000 sqft – 32,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://img.estatelion.com/1726585185881-1.jpg?w=1440&h=1080",
+    "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
+  },
+    {
+    "id": 24,
+    "name": "Windsor Grand",
+    "location": "Sector 126",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "6,000 sqft – 27,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://studiokhozi.com/wp-content/uploads/2022/10/WhatsApp-Image-2022-09-20-at-2.04.19-PM.jpeg",
+    "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
+  },
+    {
+    "id": 25,
+    "name": "Fusion Square",
+    "location": "Sector 126",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "6,000 sqft – 16,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://jll-global-gdim-res.cloudinary.com/image/upload/v1505553104/IN_ML20170916/Fusion-Square-5A-5B_10296_20170916_001.jpg",
+    "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
+  },
+    {
+    "id": 26,
+    "name": "Club 125",
+    "location": "Sector 125",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "6,000 sqft – 40,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://www.cbre.co.in/resources/fileassets/IN-SMPL-17555/f4448dda/bed0482d-32a0-4aa2-b0c2-448e7cb00a2a_watermark_Photo_2_large.jpg",
+    "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
+  },
+    {
+    "id": 27,
+    "name": "Windsor IT Park",
+    "location": "Sector 125",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "5,000 sqft – 18,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://res.cloudinary.com/myhq/image/upload/q_auto/w_1920/f_auto/workspaces/windsor-it-park-sector125/commercial-leasing/k27n8r.jpg",
+    "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
+  },
+    {
+    "id": 28,
+    "name": "Jask Tower",
+    "location": "Sector 125",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "4,000 sqft – 17,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://res.cloudinary.com/myhq/image/upload/q_auto/w_1920/f_auto/workspaces/jask-tower-sector125/commercial-leasing/exterior/8479pc.jpg",
+    "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
+  },
+    {
+    "id": 29,
+    "name": "V.J. Business Tower",
+    "location": "Sector 125",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "10,000 sqft – 20,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSzh8KKHVnNU1whg_nBIr8ZY_FK3lnIKi1nOlEFiDPDcei8nEx9YadFcmwK3wTptOdLvrbXfy3toUQfG6RFiF0-3n1eAkg0dREgChafks74xnR54GkZT9E-FD6PB1-u7FV0tfyng=s1360-w1360-h1020-rw",
+    "description": "Adjacent to Metro Station, Okhla Bird sanctuary Noida"
+  },
+    {
+    "id": 30,
+    "name": "K.S Corporate Tower",
+    "location": "Sector 16A",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "2,000 sqft – 16,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://cf-cdn.cityinfoservices.com/public/uploads/property/images/medium/947956576ba7d250f9KS%20Corporate%20Tower%20(Noida).jpg",
+    "description": "Adjacent to Metro Station, Sector-16 Noida"
+  },
+     {
+    "id": 31,
+    "name": "The Ikon Tower",
+    "location": "Sector 16A",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "9,000 sqft – 20,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://propliners.in/public/uploads/property/1753966010_the-ikon-tower-film-city-noida.webp",
+    "description": "Adjacent to Metro Station, Sector-16 Noida"
+  },
+     {
+    "id": 32,
+    "name": "SB Tower",
+    "location": "Sector 16A",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "3,000 sqft – 20,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://cf-cdn.cityinfoservices.com/public/uploads/project/images/large/5943862c4178240e42Sb%20Tower%20-%20Noida.jpg",
+    "description": "Adjacent to Metro Station, Sector-16 Noida"
+  },
+     {
+    "id": 33,
+    "name": "Sovereign Capital Gate",
+    "location": "Sector 16A",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "2,000 sqft – 50,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://cf-cdn.cityinfoservices.com/public/uploads/project/images/large/4815262c814c34ee1fSovereign%20Capital%20Gate%20(FC-12)%20-%20Noida%20(1).jpg",
+    "description": "Adjacent to Metro Station, Sector-16 Noida"
+  },
+     {
+    "id": 34,
+    "name": "IT Tower",
+    "location": "Sector 16A",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "2,000 sqft – 20,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSyQy3uIGk7791je1PML-hzKTETcPKCjg_-1_0CBSUswQabt_3poa9Xcdx_OuwhOL4xN00VrrVyk0-zi1-0VcfzUh4nXwBs_GoU8vDtWJSzHE99aZz9S_TvSzKW8XRaR_vAEEeg=s1360-w1360-h1020-rw",
+    "description": "Adjacent to Metro Station, Sector-16 Noida"
+  },
+     {
+    "id": 35,
+    "name": "Candor Techspace",
+    "location": "Sector 62",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "5,000 sqft – 32,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://www.brookfieldindiareit.in/images/noida62property-video-img2.png",
+    "description": "Adjacent to Metro Station, Sector-62 Noida"
+  },
+     {
+    "id": 36,
+    "name": "Embassy Galaxy Business Park",
+    "location": "Sector 62",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "6,000 sqft – 40,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://www.gulshanone29.com/images/overview.webp",
+    "description": "Adjacent to Metro Station, Sector-62 Noida"
+  },
+     {
+    "id": 37,
+    "name": "Green Boulevard",
+    "location": "Sector 62",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "10,000 sqft – 40,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://lh3.googleusercontent.com/gps-cs-s/AG0ilSxEJOvfZuseMeg48mcvcu3NTDVOgh15z62UjnyYtEJCVBBegtZvGSJwcSkjDEORdUcE_1ChGPkEUa_7KSZeTJ-hjPCak3ztM4vo8PdHoNOcHDr2eDZ8otgdtjA3VOI_PO2p-RmK=s1360-w1360-h1020-rw",
+    "description": "Adjacent to Metro Station, Sector-62 Noida"
+  },
+     {
+    "id": 38,
+    "name": " Noida One",
+    "location": "Sector 62",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "1,000 sqft – 20,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://cf-cdn.cityinfoservices.com/public/uploads/project/images/default/medium/4908462cd6799ca02aKLJ%20Noida%20One%20-%20Tower%20B.jpg",
+    "description": "Adjacent to Metro Station, Sector-62 Noida"
+  },
+     {
+    "id": 39,
+    "name": "Knowledge Boulevard",
+    "location": "Sector 62",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "10,000 sqft – 80,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://majesticknowledgeboulevard.in/wp-content/uploads/2023/10/majestic-knowledge-boulevard-sector-62-noida.webp",
+    "description": "Adjacent to Metro Station, Electronic City Metro Station Noida"
+  },
+     {
+    "id": 40,
+    "name": "Graphix Tower",
+    "location": "Sector 62",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "3,000 sqft – 25,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://jsgofficespace.co.in/wp-content/uploads/2019/03/WhatsApp-Image-2019-03-02-at-4.01.44-PM.jpeg",
+    "description": "Adjacent to Metro Station, Electronic City Metro Station Noida"
+  },
+     {
+    "id": 41,
+    "name": "Steller IT Park",
+    "location": "Sector 62",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "1,000 sqft – 50,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://content3.jdmagicbox.com/comp/noida/b6/011pxx11.xx11.180423181513.e1b6/catalogue/stellar-it-park-noida-sector-62-noida-business-centres-t2j8hi0mpr.jpg",
+    "description": "Adjacent to Metro Station, Electronic City Metro Station Noida"
+  },
+  {
+    "id": 42,
+    "name": "Discovery Tower",
+    "location": "Sector 62",
+    "type": "Office Space",
+    "category": "Office Spaces",
+    "size": "7,000 sqft – 32,000 sqft",
+    "availableFor": ["lease"],
+    "image": "https://jll-global-gdim-res.cloudinary.com/image/upload/v1505553661/IN_ML20170916/Discovery-Tower_9990_20170916_002.jpg",
+    "description": "Adjacent to Metro Station, Electronic City Metro Station Noida"
   }
+  
 
 ]
